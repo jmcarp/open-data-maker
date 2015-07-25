@@ -12,6 +12,7 @@ describe "unique key(s)" do
   end
 
   it "duplicates records with no unique keys" do
+    sleep 5
     DataMagic.config = DataMagic::Config.new
     2.times { DataMagic.import_with_dictionary }
     result = DataMagic.search({})
@@ -19,6 +20,7 @@ describe "unique key(s)" do
   end
 
   it "loads records once by state" do
+    sleep 5
     DataMagic.config = DataMagic::Config.new
     DataMagic.config.data['unique'] = ['state']
     2.times { DataMagic.import_with_dictionary }

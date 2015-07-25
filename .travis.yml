@@ -1,10 +1,15 @@
 language: ruby
 rvm:
  - "2.2.2"
+
+before_install:
+  - sudo apt-get purge elasticsearch
+  - curl -O https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.7.0.deb
+  - sudo dpkg -i elasticsearch-1.7.0.deb
+  - sudo service elasticsearch start
+
 # uncomment this line if your project needs to run something other than `rake`:
 script: bundle exec rake spec
-services:
-  - elasticsearch
 
 # ElasticSearch may take few seconds to start and may not be available
 # when the script is executed, so we make Travis CI wait with the sleep command
